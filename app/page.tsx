@@ -3,7 +3,18 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import { useRef } from "react"
-import { ArrowRight, Upload, Lock, Scale, History, Eye, ArrowLeftRight, GraduationCap, Sparkles } from "lucide-react"
+import {
+  ArrowRight,
+  Upload,
+  Lock,
+  Scale,
+  History,
+  Eye,
+  ArrowLeftRight,
+  GraduationCap,
+  Sparkles,
+  Users,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { LandingHero } from "@/components/landing/landing-hero"
@@ -55,6 +66,13 @@ export default function Home() {
             >
               <GraduationCap className="h-4 w-4" />
               Quiz
+            </Link>
+            <Link
+              href="/lawyers"
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <Users className="h-4 w-4" />
+              Find Lawyers
             </Link>
             <Link href="/privacy" className="text-sm font-medium hover:text-primary transition-colors">
               Privacy
@@ -189,6 +207,15 @@ export default function Home() {
                   >
                     <GraduationCap className="h-3 w-3" />
                     Quiz
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/lawyers"
+                    className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                  >
+                    <Users className="h-3 w-3" />
+                    Find Lawyers
                   </Link>
                 </li>
               </ul>
