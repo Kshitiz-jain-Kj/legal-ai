@@ -3,14 +3,11 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import { useRef } from "react"
-import { ArrowRight, Upload, Lock, Scale, History, Eye, ArrowLeftRight } from "lucide-react"
+import { ArrowRight, Upload, Lock, Scale, History, Eye, ArrowLeftRight, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { LandingHero } from "@/components/landing/landing-hero"
-import { HowItWorks } from "@/components/landing/how-it-works"
-import { UseCases } from "@/components/landing/use-cases"
 import { TrustBadges } from "@/components/landing/trust-badges"
-import { FeaturesShowcase } from "@/components/landing/features-showcase"
 import { MobileNav } from "@/components/mobile-nav"
 
 export default function Home() {
@@ -41,18 +38,17 @@ export default function Home() {
             </span>
           </Link>
 
+          {/* Updated Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
-              How It Works
-            </Link>
-            <Link href="#features" className="text-sm font-medium hover:text-primary transition-colors">
-              Features
-            </Link>
-            <Link href="#use-cases" className="text-sm font-medium hover:text-primary transition-colors">
-              Use Cases
-            </Link>
             <Link href="/compare" className="text-sm font-medium hover:text-primary transition-colors">
               Compare States
+            </Link>
+            <Link
+              href="/quiz"
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <GraduationCap className="h-4 w-4" />
+              Quiz
             </Link>
             <Link href="/privacy" className="text-sm font-medium hover:text-primary transition-colors">
               Privacy
@@ -83,15 +79,6 @@ export default function Home() {
 
         {/* Trust Badges */}
         <TrustBadges />
-
-        {/* How It Works */}
-        <HowItWorks />
-
-        {/* Features Showcase */}
-        <FeaturesShowcase />
-
-        {/* Use Cases */}
-        <UseCases />
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
@@ -180,8 +167,12 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Features
+                  <Link
+                    href="/quiz"
+                    className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                  >
+                    <GraduationCap className="h-4 w-4" />
+                    Quiz
                   </Link>
                 </li>
               </ul>
