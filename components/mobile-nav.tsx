@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Upload, History, MessageSquare, Shield } from "lucide-react"
+import { Home, Upload, History, MessageSquare, Sparkles } from "lucide-react"
 
 export function MobileNav() {
   const pathname = usePathname()
@@ -10,16 +10,16 @@ export function MobileNav() {
   const navItems = [
     { href: "/", icon: Home, label: "Home" },
     { href: "/analyze", icon: Upload, label: "Analyze" },
+    { href: "/law-of-the-day", icon: Sparkles, label: "Daily Law" },
     { href: "/saved-cases", icon: History, label: "Saved" },
     { href: "/chat", icon: MessageSquare, label: "Chat" },
-    { href: "/privacy", icon: Shield, label: "Privacy" },
   ]
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 backdrop-blur-lg md:hidden">
       <div className="flex items-center justify-around py-2">
         {navItems.map((item) => {
-          const isActive = pathname === item.href
+          const isActive = pathname === item.href || pathname.startsWith(item.href + "/")
           return (
             <Link
               key={item.href}
