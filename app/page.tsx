@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import { useRef } from "react"
-import { ArrowRight, Upload, Lock, Scale, History, Eye, ArrowLeftRight, GraduationCap } from "lucide-react"
+import { ArrowRight, Upload, Lock, Scale, History, Eye, ArrowLeftRight, GraduationCap, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { LandingHero } from "@/components/landing/landing-hero"
@@ -38,8 +38,14 @@ export default function Home() {
             </span>
           </Link>
 
-          {/* Updated Navigation */}
           <nav className="hidden md:flex items-center gap-6">
+            <Link
+              href="/law-of-the-day"
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <Sparkles className="h-4 w-4" />
+              Law of the Day
+            </Link>
             <Link href="/compare" className="text-sm font-medium hover:text-primary transition-colors">
               Compare States
             </Link>
@@ -115,11 +121,17 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              <div className="mt-6">
+              <div className="mt-6 flex flex-wrap justify-center gap-4">
                 <Link href="/compare">
                   <Button variant="ghost" size="sm" className="gap-2">
                     <ArrowLeftRight className="h-4 w-4" />
                     Compare Laws Across States
+                  </Button>
+                </Link>
+                <Link href="/law-of-the-day">
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <Sparkles className="h-4 w-4" />
+                    Law of the Day
                   </Button>
                 </Link>
               </div>
@@ -157,8 +169,12 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/demo" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Demo
+                  <Link
+                    href="/law-of-the-day"
+                    className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                  >
+                    <Sparkles className="h-3 w-3" />
+                    Law of the Day
                   </Link>
                 </li>
                 <li>
@@ -171,7 +187,7 @@ export default function Home() {
                     href="/quiz"
                     className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
                   >
-                    <GraduationCap className="h-4 w-4" />
+                    <GraduationCap className="h-3 w-3" />
                     Quiz
                   </Link>
                 </li>
