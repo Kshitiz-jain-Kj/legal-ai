@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter, Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/sonner"
+import { FloatingChatButton } from "@/components/floating-chat-button"
 import "./globals.css"
 
 const inter = Inter({
@@ -55,6 +56,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <FloatingChatButton />
         <Toaster />
         <Analytics />
       </body>
