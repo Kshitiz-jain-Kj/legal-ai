@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Upload, History, MessageSquare, Sparkles } from "lucide-react"
+import { Home, Upload, History, MessageSquare, Users } from "lucide-react"
 
 export function MobileNav() {
   const pathname = usePathname()
@@ -10,7 +10,7 @@ export function MobileNav() {
   const navItems = [
     { href: "/", icon: Home, label: "Home" },
     { href: "/analyze", icon: Upload, label: "Analyze" },
-    { href: "/law-of-the-day", icon: Sparkles, label: "Daily Law" },
+    { href: "/lawyers", icon: Users, label: "Lawyers" },
     { href: "/saved-cases", icon: History, label: "Saved" },
     { href: "/chat", icon: MessageSquare, label: "Chat" },
   ]
