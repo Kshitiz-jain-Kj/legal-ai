@@ -3,16 +3,18 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, Upload, History, MessageSquare, Users } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export function MobileNav() {
   const pathname = usePathname()
+  const { t } = useLanguage()
 
   const navItems = [
-    { href: "/", icon: Home, label: "Home" },
-    { href: "/analyze", icon: Upload, label: "Analyze" },
-    { href: "/lawyers", icon: Users, label: "Lawyers" },
-    { href: "/saved-cases", icon: History, label: "Saved" },
-    { href: "/chat", icon: MessageSquare, label: "Chat" },
+    { href: "/", icon: Home, label: t.nav.home },
+    { href: "/analyze", icon: Upload, label: t.nav.analyze },
+    { href: "/lawyers", icon: Users, label: t.nav.lawyers },
+    { href: "/saved-cases", icon: History, label: t.nav.savedCases },
+    { href: "/chat", icon: MessageSquare, label: t.nav.chat },
   ]
 
   return (

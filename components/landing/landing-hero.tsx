@@ -5,8 +5,11 @@ import Link from "next/link"
 import { ArrowRight, Upload, FileText, Sparkles, CheckCircle, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { useLanguage } from "@/lib/language-context"
 
 export function LandingHero() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative overflow-hidden py-16 md:py-24 lg:py-32">
       {/* Animated background elements */}
@@ -34,7 +37,7 @@ export function LandingHero() {
             >
               <Badge variant="secondary" className="gap-2 px-4 py-1.5">
                 <Sparkles className="h-3.5 w-3.5 text-accent" />
-                AI-Powered Legal Explainer
+                {t.hero.badge}
               </Badge>
             </motion.div>
 
@@ -44,8 +47,10 @@ export function LandingHero() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance"
             >
-              Understand legal documents{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">instantly</span>
+              {t.hero.title}{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {t.hero.titleHighlight}
+              </span>
             </motion.h1>
 
             <motion.p
@@ -54,8 +59,7 @@ export function LandingHero() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              Your personal legal explainer. Upload any document and get state-specific, simple, and accurate
-              explanations in plain English.
+              {t.hero.subtitle}
             </motion.p>
 
             <motion.div
@@ -67,13 +71,13 @@ export function LandingHero() {
               <Link href="/analyze">
                 <Button size="lg" className="gap-2 w-full sm:w-auto shadow-lg shadow-primary/20">
                   <Upload className="h-5 w-5" />
-                  Upload Document
+                  {t.hero.uploadButton}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/demo">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent">
-                  See Demo
+                  {t.hero.demoButton}
                 </Button>
               </Link>
             </motion.div>
@@ -86,15 +90,15 @@ export function LandingHero() {
             >
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-accent" />
-                <span>No signup required</span>
+                <span>{t.hero.noSignup}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-accent" />
-                <span>Data never stored</span>
+                <span>{t.hero.privacyNote}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-accent" />
-                <span>100% free</span>
+                <span>{t.hero.free}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -115,18 +119,18 @@ export function LandingHero() {
                   </div>
                   <div>
                     <div className="font-medium">Traffic_Violation_Notice.pdf</div>
-                    <div className="text-sm text-muted-foreground">Analyzing...</div>
+                    <div className="text-sm text-muted-foreground">{t.analyze.analyzing}</div>
                   </div>
                 </div>
               </div>
 
               {/* Animated Analysis Steps */}
               <div className="p-6 space-y-4">
-                <AnalysisStep delay={0.8} label="Extracting text" completed />
-                <AnalysisStep delay={1.2} label="Detecting sections" completed />
-                <AnalysisStep delay={1.6} label="Identifying state: Maharashtra" completed />
-                <AnalysisStep delay={2} label="Matching legal sections" active />
-                <AnalysisStep delay={2.4} label="Generating explanation" />
+                <AnalysisStep delay={0.8} label={t.analyze.step1} completed />
+                <AnalysisStep delay={1.2} label={t.analyze.step2} completed />
+                <AnalysisStep delay={1.6} label={t.analyze.step3} completed />
+                <AnalysisStep delay={2} label={t.analyze.step4} active />
+                <AnalysisStep delay={2.4} label={t.analyze.step5} />
               </div>
 
               {/* Result Preview */}
@@ -138,11 +142,9 @@ export function LandingHero() {
               >
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="h-4 w-4 text-accent" />
-                  <span className="font-medium text-sm">Quick Verdict</span>
+                  <span className="font-medium text-sm">{t.analyze.quickVerdict}</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  "This appears to be a minor traffic violation. The fine is likely bailable..."
-                </p>
+                <p className="text-sm text-muted-foreground">{t.analyze.result}</p>
               </motion.div>
 
               {/* Scanning effect */}
@@ -163,7 +165,9 @@ export function LandingHero() {
             >
               <div className="flex items-center gap-2 text-sm">
                 <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                <span className="font-medium">Risk: Low</span>
+                <span className="font-medium">
+                  {t.analyze.riskLevel}: {t.analyze.low}
+                </span>
               </div>
             </motion.div>
 
@@ -175,7 +179,7 @@ export function LandingHero() {
             >
               <div className="flex items-center gap-2 text-sm">
                 <Shield className="h-4 w-4 text-accent" />
-                <span className="font-medium">Encrypted</span>
+                <span className="font-medium">{t.analyze.encrypted}</span>
               </div>
             </motion.div>
           </motion.div>

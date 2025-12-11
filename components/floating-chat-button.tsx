@@ -5,12 +5,14 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { MessageCircle, X, Scale, ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 
 export function FloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useLanguage()
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50 hidden md:block">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -27,7 +29,7 @@ export function FloatingChatButton() {
                   <Scale className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Legal AI Assistant</h3>
+                  <h3 className="font-semibold">{t.chat.title}</h3>
                   <p className="text-xs text-primary-foreground/80">Powered by Gemini</p>
                 </div>
               </div>
@@ -35,9 +37,7 @@ export function FloatingChatButton() {
 
             {/* Content */}
             <div className="p-4 space-y-3">
-              <p className="text-sm text-muted-foreground">
-                Get instant answers to your legal questions about Indian law, traffic violations, and more.
-              </p>
+              <p className="text-sm text-muted-foreground">{t.chat.subtitle}</p>
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -56,10 +56,12 @@ export function FloatingChatButton() {
 
               <Link href="/chat" className="block">
                 <Button className="w-full gap-2 bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                  Start Chat
+                  {t.chat.title}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
+
+              <p className="text-xs text-muted-foreground text-center">{t.chat.disclaimer}</p>
             </div>
           </motion.div>
         )}

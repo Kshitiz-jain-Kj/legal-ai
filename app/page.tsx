@@ -20,12 +20,15 @@ import { Badge } from "@/components/ui/badge"
 import { LandingHero } from "@/components/landing/landing-hero"
 import { TrustBadges } from "@/components/landing/trust-badges"
 import { MobileNav } from "@/components/mobile-nav"
+import { useLanguage } from "@/lib/language-context"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
+  const { t } = useLanguage()
 
   return (
     <div ref={containerRef} className="flex min-h-screen flex-col pb-20 md:pb-0">
@@ -55,41 +58,42 @@ export default function Home() {
               className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
             >
               <Sparkles className="h-4 w-4" />
-              Law of the Day
+              {t.nav.lawOfTheDay}
             </Link>
             <Link href="/compare" className="text-sm font-medium hover:text-primary transition-colors">
-              Compare States
+              {t.nav.compareStates}
             </Link>
             <Link
               href="/quiz"
               className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
             >
               <GraduationCap className="h-4 w-4" />
-              Quiz
+              {t.nav.quiz}
             </Link>
             <Link
               href="/lawyers"
               className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
             >
               <Users className="h-4 w-4" />
-              Find Lawyers
+              {t.nav.findLawyers}
             </Link>
             <Link href="/privacy" className="text-sm font-medium hover:text-primary transition-colors">
-              Privacy
+              {t.nav.privacy}
             </Link>
           </nav>
 
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <Link href="/saved-cases">
               <Button variant="ghost" size="sm" className="hidden sm:flex gap-2">
                 <History className="h-4 w-4" />
-                Saved Cases
+                {t.nav.savedCases}
               </Button>
             </Link>
             <Link href="/analyze">
               <Button size="sm" className="gap-2">
                 <Upload className="h-4 w-4" />
-                <span className="hidden sm:inline">Analyze Document</span>
+                <span className="hidden sm:inline">{t.nav.analyzeDocument}</span>
                 <span className="sm:hidden">Start</span>
               </Button>
             </Link>
@@ -115,27 +119,22 @@ export default function Home() {
               className="text-center max-w-2xl mx-auto"
             >
               <Badge variant="secondary" className="mb-4">
-                Ready to Get Started?
+                {t.cta.badge}
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-balance">
-                Understand Your Legal Documents in Minutes
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Upload any legal document and get instant, state-specific explanations in plain English. Your data is
-                never stored.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-balance">{t.cta.title}</h2>
+              <p className="text-lg text-muted-foreground mb-8">{t.cta.subtitle}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/analyze">
                   <Button size="lg" className="gap-2 w-full sm:w-auto">
                     <Upload className="h-5 w-5" />
-                    Upload Document Now
+                    {t.cta.uploadButton}
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/demo">
                   <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto bg-transparent">
                     <Eye className="h-5 w-5" />
-                    See Demo Analysis
+                    {t.cta.demoButton}
                   </Button>
                 </Link>
               </div>
@@ -143,13 +142,13 @@ export default function Home() {
                 <Link href="/compare">
                   <Button variant="ghost" size="sm" className="gap-2">
                     <ArrowLeftRight className="h-4 w-4" />
-                    Compare Laws Across States
+                    {t.cta.compareButton}
                   </Button>
                 </Link>
                 <Link href="/law-of-the-day">
                   <Button variant="ghost" size="sm" className="gap-2">
                     <Sparkles className="h-4 w-4" />
-                    Law of the Day
+                    {t.cta.lawOfDayButton}
                   </Button>
                 </Link>
               </div>
@@ -169,21 +168,19 @@ export default function Home() {
                 </div>
                 <span className="font-bold">LegalEase AI</span>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
-                Your personal legal explainer. Simple, accurate, state-specific.
-              </p>
+              <p className="text-sm text-muted-foreground mb-4">{t.footer.tagline}</p>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Lock className="h-4 w-4 text-accent" />
-                <span>100% Secure & Private</span>
+                <span>{t.footer.securePrivate}</span>
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Product</h3>
+              <h3 className="font-semibold mb-4">{t.footer.product}</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/analyze" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Analyze Document
+                    {t.nav.analyzeDocument}
                   </Link>
                 </li>
                 <li>
@@ -192,12 +189,12 @@ export default function Home() {
                     className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
                   >
                     <Sparkles className="h-3 w-3" />
-                    Law of the Day
+                    {t.nav.lawOfTheDay}
                   </Link>
                 </li>
                 <li>
                   <Link href="/compare" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Compare States
+                    {t.nav.compareStates}
                   </Link>
                 </li>
                 <li>
@@ -206,7 +203,7 @@ export default function Home() {
                     className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
                   >
                     <GraduationCap className="h-3 w-3" />
-                    Quiz
+                    {t.nav.quiz}
                   </Link>
                 </li>
                 <li>
@@ -215,49 +212,49 @@ export default function Home() {
                     className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
                   >
                     <Users className="h-3 w-3" />
-                    Find Lawyers
+                    {t.nav.findLawyers}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
+              <h3 className="font-semibold mb-4">{t.footer.legal}</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Privacy Policy
+                    {t.footer.privacyPolicy}
                   </Link>
                 </li>
                 <li>
                   <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Terms of Service
+                    {t.footer.terms}
                   </Link>
                 </li>
                 <li>
                   <Link href="/disclaimer" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Disclaimer
+                    {t.footer.disclaimer}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Support</h3>
+              <h3 className="font-semibold mb-4">{t.footer.support}</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">
-                    FAQ
+                    {t.footer.faq}
                   </Link>
                 </li>
                 <li>
                   <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Contact
+                    {t.footer.contact}
                   </Link>
                 </li>
                 <li>
                   <Link href="/help" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Help Center
+                    {t.footer.helpCenter}
                   </Link>
                 </li>
               </ul>
@@ -265,11 +262,9 @@ export default function Home() {
           </div>
 
           <div className="mt-12 pt-8 border-t text-center">
-            <p className="text-sm text-muted-foreground mb-2">
-              This is an informational tool only. It does not provide legal advice.
-            </p>
+            <p className="text-sm text-muted-foreground mb-2">{t.footer.informational}</p>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} LegalEase AI. All rights reserved.
+              © {new Date().getFullYear()} {t.footer.copyright}
             </p>
           </div>
         </div>
